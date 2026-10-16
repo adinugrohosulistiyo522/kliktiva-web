@@ -1,0 +1,35 @@
+{
+  "package_version": "1.2.0",
+  "target": "Fix live public preview bridge inside embedded Web Admin on deployed homepage",
+  "root_cause_hypothesis": "The embedded Public UI receiver and Admin parent bridge required event.origin to equal location.origin. In nested sandboxed srcdoc contexts the event origin may be opaque or differ despite the message coming from the intended frame, causing public preview data to be ignored.",
+  "changes": [
+    "Admin receives READY/RENDERED/ERROR status messages only from the exact public preview iframe WindowProxy.",
+    "Public UI accepts PBAT_ADMIN_PREVIEW_DATA only from the exact parent Admin WindowProxy and for the expected message type.",
+    "Admin visual markup, CSS, editor behaviors, public UI source markup/CSS, mock demo dataset, Apps Script, Sheets schema, and Netlify Function remain unchanged."
+  ],
+  "local_browser_smoke_test": {
+    "passed": true,
+    "admin_loads": true,
+    "preview_brand": "Ruang Rona",
+    "preview_collections": 4,
+    "preview_palette_page_color": "#b9acd1",
+    "preview_profile_photo": "embedded data URI detected",
+    "live_update_after_editing_profile_name": true,
+    "uncaught_javascript_errors": 0,
+    "console_notes": [
+      "Browser sandbox warning for an iframe with allow-scripts and allow-same-origin; no page JavaScript errors."
+    ],
+    "scope": "Local browser smoke test. This does not independently verify the users live Netlify deployment."
+  },
+  "deploy_requirements": {
+    "replace": "site/index.html in the GitHub repository used by Netlify",
+    "redeploy_netlify": true,
+    "redeploy_apps_script": false,
+    "change_google_sheets": false,
+    "change_environment_variables": false
+  },
+  "static_assertions": "PASS",
+  "backend_changed": false,
+  "apps_script_changed": false,
+  "netlify_function_changed": false
+}
