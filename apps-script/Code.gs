@@ -6,11 +6,17 @@
  */
 const KL_SETTINGS = {
   DB_PROPERTY: 'KLIKTIVA_DATABASE_SPREADSHEET_ID',
-  VERSION: '1.1.0',
+  VERSION: '1.2.0',
   CUSTOMER_SHEET: 'Customers',
   SETTINGS_SHEET: 'Settings',
   LOGS_SHEET: 'Logs'
 };
+
+/** Platform sosmed Kliktiva. Isi URL & nama di sheet Settings; baris kosong tidak ditampilkan di website. */
+const SOCIAL_PLATFORMS = [
+  ['Instagram', 'Instagram'], ['TikTok', 'TikTok'], ['YouTube', 'YouTube'], ['Facebook', 'Facebook'],
+  ['Threads', 'Threads'], ['X', 'X (Twitter)'], ['LinkedIn', 'LinkedIn'], ['WhatsAppChannel', 'WhatsApp Channel']
+];
 
 const CUSTOMER_HEADERS = [
   'CustomerID', 'RequestID', 'SubmittedAt', 'Nama', 'NomorHP',
@@ -52,6 +58,10 @@ function setupKliktiva() {
   ensureSetting_(settings, 'AdminWhatsappNumber', '', 'Nomor WhatsApp Admin format internasional, hanya angka. Contoh Indonesia: 6281234567890. Jangan gunakan tanda +, spasi, atau strip.');
   ensureSetting_(settings, 'BrandName', 'Kliktiva', 'Nama brand yang digunakan pada respons publik.');
   ensureSetting_(settings, 'FreeTrialDays', '7', 'Durasi free trial untuk kebutuhan informasi pemasaran.');
+  SOCIAL_PLATFORMS.forEach(([key, label]) => {
+    ensureSetting_(settings, 'Social_' + key, '', 'URL akun ' + label + ' Kliktiva (diawali https://). Kosongkan jika belum ada; kartu tidak tampil di website.');
+    ensureSetting_(settings, 'Social_' + key + '_Name', '', 'Nama yang tampil di kartu ' + label + ', contoh: @kliktiva.id');
+  });
   ensureSetting_(settings, 'PrivacyNotice', 'Data digunakan untuk menindaklanjuti permintaan konsultasi landing page Kliktiva.', 'Keterangan penggunaan data konsultasi.');
 
   logs.setFrozenRows(1); logs.setColumnWidth(1, 170); logs.setColumnWidth(2, 100); logs.setColumnWidth(3, 180);
@@ -92,7 +102,8 @@ function doGet(e) {
         brandName: settings.BrandName || 'Kliktiva',
         adminWhatsappNumber: normalizeWhatsapp_(settings.AdminWhatsappNumber || ''),
         freeTrialDays: Number(settings.FreeTrialDays || 7),
-        privacyNotice: settings.PrivacyNotice || ''
+        privacyNotice: settings.PrivacyNotice || '',
+        socials: getSocials_(settings)
       }
     });
   } catch (err) {
@@ -236,6 +247,14 @@ function getSettingsMap_(sheet) {
   const map = {};
   rows.forEach(r => { if (r[0]) map[String(r[0]).trim()] = String(r[1] || '').trim(); });
   return map;
+}
+
+function getSocials_(settings) {
+  return SOCIAL_PLATFORMS.map(([key, label]) => {
+    const url = String(settings['Social_' + key] || '').trim();
+    if (!/^https:\/\/[^\s"'<>]+$/i.test(url)) return null;
+    return { platform: key, url: url, name: cleanText_(settings['Social_' + key + '_Name'] || label, 60) };
+  }).filter(Boolean);
 }
 
 function normalizeWhatsapp_(value) {

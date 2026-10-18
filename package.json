@@ -1,6 +1,6 @@
 {
   "name": "kliktiva-website-cloudflare",
-  "version": "1.3.0-cloudflare",
+  "version": "1.4.0-cloudflare",
   "private": true,
   "type": "module",
   "scripts": {

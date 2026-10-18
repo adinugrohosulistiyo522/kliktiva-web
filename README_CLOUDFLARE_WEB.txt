@@ -1,31 +1,31 @@
-KLIKTIVA WEBSITE (MARKETING) — PAKET CLOUDFLARE WORKER v1.3
+KLIKTIVA WEBSITE (MARKETING) — PAKET CLOUDFLARE WORKER v1.4
 
-ISI
-- site/            -> halaman (index.html, _headers)
-- src/index.js     -> Worker: menyajikan halaman + proxy form konsultasi di /api/kliktiva
-- apps-script/     -> backend form konsultasi (tidak berubah)
-- legacy-netlify/  -> berkas versi Netlify (tidak dipakai)
+YANG BERUBAH DARI v1.3
+- Konten website baru (posisi "website katalog atas nama brand-mu", 9 jenis bisnis, filosofi, fitur, Analytics, FAQ, proses).
+- Demo Admin memakai Web Admin terbaru (User1 PreRelease) dengan backend palsu (site/demo-admin/demo-api.js):
+  tab Demo Admin Desktop, Demo Admin Mobile, dan Galeri Template. Demo tidak pernah memanggil Apps Script.
+- Blok "Ikuti Kliktiva" di footer (URL & nama dari sheet Settings).
+- FAQ free trial mengikuti FreeTrialDays di sheet Settings (cadangan: 14).
+- Bagian Harga (menu "Harga"): mulai Rp25.000/bulan, tahunan lebih hemat & bisa nego; tombol Hubungi Admin
+  langsung ke WhatsApp Admin, termasuk kartu Personalisasi (harga nego) (nomor dari AdminWhatsappNumber di sheet Settings).
+- src/index.js (Worker) dan wrangler.jsonc TIDAK berubah.
 
-LANGKAH
-1. GitHub: buat repo baru (Private), unggah ISI folder ini ke root repo (bukan zip-nya).
-   Pastikan wrangler.jsonc, folder src dan folder site terlihat di halaman utama repo.
-2. Cloudflare > Workers & Pages > Create > Import a repository > pilih repo.
-   Project name HARUS sama dengan "name" di wrangler.jsonc (default: kliktiva-web).
-   Build command kosong, Deploy command: npx wrangler deploy. Deploy.
-3. Setelah sukses: Worker > Settings > Variables and secrets > tambah
-     KLIKTIVA_APPS_SCRIPT_URL = URL Web App Apps Script berakhiran /exec  (tipe Secret)
-   (nilainya sama dengan variabel di situs Netlify lama: Netlify > Site > Environment variables)
-   lalu deploy ulang.
-4. Uji di alamat workers.dev SEBELUM memindahkan domain:
-     /                              -> halaman Kliktiva tampil
-     /api/kliktiva?action=health    -> JSON dari Apps Script (bukan error 503/502)
-   Coba kirim satu formulir konsultasi dari halaman.
-5. Pindahkan domain:
-   a. Cloudflare > DNS > Records: HAPUS CNAME "@" (kliktiva.my.id) dan CNAME "www" yang mengarah ke Netlify.
-   b. Worker > Settings > Domains & Routes > Add > Custom Domain:
-        kliktiva.my.id  lalu  www.kliktiva.my.id
-   c. Tunggu sertifikat terbit (biasanya beberapa menit), lalu buka https://kliktiva.my.id
-6. Setelah stabil beberapa hari: lepas domain dari situs Netlify lama.
+LANGKAH DEPLOY (repo GitHub yang sama dengan v1.3)
+1. Apps Script formulir konsultasi (lakukan dulu):
+   a. Ganti isi Code.gs dengan apps-script/Code.gs (versi 1.2.0), simpan.
+   b. Jalankan setupKliktiva() satu kali -> baris Social_* ditambahkan ke sheet Settings.
+   c. Deploy > Manage deployments > Edit > Version: New version > Deploy. URL /exec tetap sama,
+      jadi variabel KLIKTIVA_APPS_SCRIPT_URL di Cloudflare tidak perlu diubah.
+   d. Di sheet Settings: ubah FreeTrialDays menjadi 14, isi Social_* (URL https://) dan Social_*_Name.
+2. GitHub: buka repo website (kliktiva-web), unggah ISI folder ini ke root repo, timpa file lama.
+   Pastikan folder site/assets dan site/demo-admin ikut terunggah.
+   (GitHub web: Add file > Upload files > seret semua isi folder > Commit changes.)
+3. Cloudflare otomatis build & deploy dari commit tersebut (Workers & Pages > kliktiva-web > Deployments).
+4. Uji setelah deploy:
+   https://kliktiva.my.id/                      -> halaman baru tampil
+   https://kliktiva.my.id/api/kliktiva?action=config -> JSON berisi adminWhatsappNumber, freeTrialDays, socials
+   Tab Demo Admin Desktop / Mobile / Galeri Template berjalan; kirim satu formulir konsultasi percobaan.
+   Jika tampilan lama masih muncul, muat ulang dengan Ctrl+F5.
 
-PEMERIKSAAN LOKAL
+PEMERIKSAAN LOKAL (opsional)
   npm run check:all
