@@ -6,7 +6,7 @@
  */
 const KL_SETTINGS = {
   DB_PROPERTY: 'KLIKTIVA_DATABASE_SPREADSHEET_ID',
-  VERSION: '1.2.0',
+  VERSION: '1.3.0',
   CUSTOMER_SHEET: 'Customers',
   SETTINGS_SHEET: 'Settings',
   LOGS_SHEET: 'Logs'
@@ -56,6 +56,8 @@ function setupKliktiva() {
 
   settings.setFrozenRows(1); settings.setColumnWidth(1, 240); settings.setColumnWidth(2, 300); settings.setColumnWidth(3, 170); settings.setColumnWidth(4, 480);
   ensureSetting_(settings, 'AdminWhatsappNumber', '', 'Nomor WhatsApp Admin format internasional, hanya angka. Contoh Indonesia: 6281234567890. Jangan gunakan tanda +, spasi, atau strip.');
+  ensureSetting_(settings, 'ContactEmail', '', 'Email kontak Kliktiva yang tampil di website (footer, section Kontak, halaman Syarat & Ketentuan dan Kebijakan Pengembalian Dana). Kosongkan untuk menyembunyikan.');
+  ensureSetting_(settings, 'BusinessAddress', '', 'Alamat usaha Kliktiva yang tampil di website, satu baris. Contoh: Jl. Contoh No. 1, Kota, Provinsi 12345. Kosongkan untuk menyembunyikan.');
   ensureSetting_(settings, 'BrandName', 'Kliktiva', 'Nama brand yang digunakan pada respons publik.');
   ensureSetting_(settings, 'FreeTrialDays', '7', 'Durasi free trial untuk kebutuhan informasi pemasaran.');
   SOCIAL_PLATFORMS.forEach(([key, label]) => {
@@ -103,6 +105,8 @@ function doGet(e) {
         adminWhatsappNumber: normalizeWhatsapp_(settings.AdminWhatsappNumber || ''),
         freeTrialDays: Number(settings.FreeTrialDays || 7),
         privacyNotice: settings.PrivacyNotice || '',
+        contactEmail: normalizeEmail_(settings.ContactEmail || ''),
+        businessAddress: cleanText_(settings.BusinessAddress || '', 300),
         socials: getSocials_(settings)
       }
     });
@@ -255,6 +259,11 @@ function getSocials_(settings) {
     if (!/^https:\/\/[^\s"'<>]+$/i.test(url)) return null;
     return { platform: key, url: url, name: cleanText_(settings['Social_' + key + '_Name'] || label, 60) };
   }).filter(Boolean);
+}
+
+function normalizeEmail_(value) {
+  const v = String(value || '').trim();
+  return /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(v) && v.length <= 120 ? v : '';
 }
 
 function normalizeWhatsapp_(value) {

@@ -181,8 +181,8 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
 .service-card p{color:var(--muted);font-size:15px;line-height:1.65}
 .service-card.featured p{color:#B9C4D8}
 .check-list{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:10px}
-.check-list li{display:flex;gap:10px;font-size:14.5px;line-height:1.5}
-.check-list li::before{content:"";flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;background:var(--gradient) center/12px no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2'%3E%3Cpath d='m5 12 4 4 10-10'/%3E%3C/svg%3E"),var(--gradient);background-size:12px,100%;background-position:center}
+.check-list li{position:relative;display:block;padding-left:30px;font-size:14.5px;line-height:1.5}
+.check-list li::before{content:"";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--gradient) center/12px no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2'%3E%3Cpath d='m5 12 4 4 10-10'/%3E%3C/svg%3E"),var(--gradient);background-size:12px,100%;background-position:center}
 .check-list li em{color:var(--muted);font-style:italic}
 .service-card.featured .check-list li em{color:#9FB0CC}
 .service-cta{margin-top:36px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
@@ -310,8 +310,8 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
 .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
 .contact-copy p{color:var(--muted);font-size:16px;line-height:1.75}
 .contact-points{display:grid;gap:12px;margin-top:24px}
-.contact-points div{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#33415C}
-.contact-points div::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--blue);font-weight:900;font-size:12px}
+.contact-points div{position:relative;display:block;padding-left:36px;font-size:14.5px;line-height:1.6;color:#33415C}
+.contact-points div::before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--blue);font-weight:900;font-size:12px}
 .contact-form{position:relative;padding:30px;border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
 .form-head h3{margin-bottom:6px}
 .form-head p{color:var(--muted);font-size:14.5px}
@@ -368,6 +368,47 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
 .footer-admin-contact svg{width:17px;height:17px;color:#4ADE80}
 .preview-flag{position:fixed;left:12px;bottom:12px;z-index:80;padding:7px 12px;border-radius:999px;background:#FFF7D6;border:1px solid #F3DE8A;color:#6B5600;font-size:12px;font-weight:700;box-shadow:var(--shadow-sm)}
 
+
+/* v1.5 */
+.nw{white-space:nowrap}
+.btn,.nav-links a{white-space:nowrap}
+.form-submit,.modal-actions .btn,.hero-ctas .btn{white-space:normal;text-align:center}
+@media (min-width:1280px){.nav{gap:14px}.nav-links{gap:0}.nav-links a{padding:8px 9px;font-size:14px}.nav-actions .btn-sm{padding:0 14px}}
+.btn-line{background:transparent;border-color:var(--line);color:var(--navy)}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.nav-cta-mobile{display:none}
+.plan-switch{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 auto 18px;font-size:14px;color:var(--muted);font-weight:600}
+.plan-seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--light);border:1px solid var(--line)}
+.plan-seg button{border:0;background:transparent;min-height:36px;padding:0 16px;border-radius:999px;font-weight:750;font-size:13.5px;color:#33415C;cursor:pointer}
+.plan-seg button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
+.plan-note{text-align:center;margin:-6px auto 20px;max-width:680px;font-size:13.5px;color:var(--muted)}
+.tpl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 auto 34px;max-width:960px}
+.tpl-stat{padding:18px;border-radius:18px;background:#fff;border:1px solid var(--line);text-align:center}
+.tpl-stat strong{display:block;font-size:26px;letter-spacing:-.03em;color:transparent;background:var(--gradient);-webkit-background-clip:text;background-clip:text}
+.tpl-stat span{font-size:13.5px;color:var(--muted);font-weight:600}
+.tpl-foot{margin-top:30px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;text-align:center}
+.tpl-foot p{margin:0;width:100%;color:#33415C;font-weight:600}
+.step a.step-link{display:inline-block;margin-top:12px;color:var(--blue);font-weight:750;font-size:14px}
+.price-grid.four{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1240px}
+.price-grid.four .price-card{padding:26px}
+.price-grid.four .price-amount{font-size:clamp(28px,2.5vw,36px)}
+.price-grid.four .price-card{min-width:0;overflow-wrap:anywhere}
+.price-fine{margin:6px 0 16px;font-size:12.5px;color:var(--muted)}
+.price-card.price-featured .price-fine{color:#9FB0CC}
+.pay-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:26px auto 0;max-width:900px;padding:14px 18px;border-radius:16px;background:#fff;border:1px solid var(--line);font-size:14px;color:#33415C;font-weight:600}
+.pay-strip span{display:inline-flex;align-items:center;gap:8px}
+.pay-strip span::before{content:"✓";color:var(--blue);font-weight:900}
+.cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+@media (max-width:1279px){
+  .nav-links{display:none;position:absolute;left:12px;right:12px;top:calc(100% + 8px);flex-direction:column;align-items:stretch;padding:12px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 14px}
+  .menu-toggle{display:inline-flex}
+}
+@media (max-width:1080px){.price-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.tpl-stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:820px){.nav-actions .btn-line{display:none}.nav-links .nav-cta-mobile{display:block;font-weight:800;color:var(--blue)}}
+@media (max-width:640px){.price-grid.four{grid-template-columns:1fr}.nav-actions .btn-gradient{padding:0 14px}}
+
 /* Responsif */
 @media (max-width:1080px){
   .nav-links{display:none;position:absolute;left:12px;right:12px;top:calc(100% + 8px);flex-direction:column;align-items:stretch;padding:12px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -376,6 +417,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   .menu-toggle{display:inline-flex}
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-visual{min-height:auto;padding:30px 0 10px}
+  .note-click{right:0}
   .pillar-grid,.metric-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .steps .step.grow{grid-column:span 2}
@@ -393,7 +435,6 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   .journey-step:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%) rotate(90deg)}
   .contact-grid{grid-template-columns:1fr;gap:28px}
   .form-grid{grid-template-columns:1fr}
-  .nav-actions .btn-gradient{display:none}
   .modal-box{grid-template-columns:1fr;padding:14px;gap:14px;max-height:calc(100vh - 24px);overflow:auto}
   .modal-phone{width:min(360px,calc(100vw - 60px));height:62vh;margin:0 auto}
   .an-kpis{grid-template-columns:repeat(2,1fr)}
@@ -423,16 +464,35 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   .phone{width:100%;margin:0 auto}
   .tpl-thumb{height:340px}
 }
+.footer-contact{display:grid;gap:6px;align-content:start;min-width:220px}
+.footer-contact h4{margin:0 0 4px;font-size:15px;color:#fff}
+.footer-contact a,.footer-contact span{color:#C3CCDD;font-size:14.5px;font-weight:600}
+.footer-contact a.footer-phone{color:#fff;font-size:18px;font-weight:800;letter-spacing:-.01em}
+.footer-contact a:hover{color:#fff}
+.footer-legal{display:flex;flex-wrap:wrap;gap:6px 18px}
+.footer-legal a{color:#8C9AB5}
+.footer-legal a:hover{color:#fff}
+.contact-phone{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:22px;padding:14px 18px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+.contact-phone small{display:block;width:100%;color:var(--muted);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.contact-phone a{font-size:20px;font-weight:850;color:var(--navy);letter-spacing:-.01em}
+.contact-phone a.cp-wa{font-size:14px;font-weight:800;color:var(--blue)}
+[data-show][hidden]{display:none!important}
+.contact-extra{width:100%;font-size:14.5px;color:#33415C;overflow-wrap:anywhere}
+.contact-phone .contact-extra a{color:var(--blue);font-weight:700;font-size:14.5px;letter-spacing:0}
+.footer-contact span[data-show]{overflow-wrap:anywhere;max-width:280px}
+.legal-note{margin:14px auto 0;text-align:center;font-size:13.5px;color:var(--muted)}
+.legal-note a{color:var(--blue);font-weight:700}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container nav">
+  <div class="container-wide nav">
     <a class="brand" href="#beranda" aria-label="Kliktiva, kembali ke beranda"><img src="assets/kliktiva-logo.png" alt="Kliktiva"></a>
     <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
       <a href="#demo">Demo</a>
+      <a href="#template">Template</a>
       <a href="#jenis-bisnis">Jenis Bisnis</a>
       <a href="#layanan">Layanan</a>
       <a href="#filosofi">Filosofi</a>
@@ -441,9 +501,11 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <a href="#cara-kerja">Proses</a>
       <a href="#harga">Harga</a>
       <a href="#faq">FAQ</a>
+      <a class="nav-cta-mobile" href="#kontak">Konsultasi gratis</a>
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-gradient btn-sm" href="#kontak">Konsultasi gratis</a>
+      <a class="btn btn-line btn-sm" href="#kontak">Konsultasi gratis</a>
+      <a class="btn btn-gradient btn-sm" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Buka navigasi"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
@@ -455,16 +517,17 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   <div class="container hero-grid">
     <div class="hero-copy">
       <span class="eyebrow">Website katalog untuk semua jenis usaha</span>
-      <h1>Satu alamat web atas nama brand-mu, <span class="accent gradient-text">untuk semua produk, jasa, dan link afiliasi.</span></h1>
-      <p class="lead">Kliktiva menyiapkan website katalog seperti <b>namaclient.kliktiva.my.id</b> untuk affiliator, kreator, UMKM, kuliner, jasa profesional, hingga komunitas. Tampilkan produk, layanan, koleksi, dan link Shopee, TikTok Shop, atau WhatsApp dalam satu halaman rapi, lalu kelola sendiri lewat Web Admin kapan saja. Cukup satu link untuk bio Instagram, TikTok, YouTube, dan Threads.</p>
+      <h1>Satu alamat web atas nama <span class="nw">brand-mu</span>, <span class="accent gradient-text">untuk semua produk, jasa, dan link afiliasi.</span></h1>
+      <p class="lead">Buat website katalog atas nama <span class="nw">brand-mu</span> sendiri, seperti <b>namaclient.kliktiva.my.id</b>, hanya dalam hitungan detik. Cocok untuk affiliator, kreator, UMKM, kuliner, jasa profesional, hingga komunitas. Tampilkan produk, layanan, koleksi, dan link Shopee, TikTok Shop, atau WhatsApp dalam satu halaman rapi, lalu kelola sendiri lewat Web Admin kapan saja. Cukup satu link untuk bio Instagram, TikTok, YouTube, dan Threads.</p>
       <div class="hero-ctas">
-        <a class="btn btn-gradient" href="#kontak">Konsultasi gratis <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-gradient" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang, Gratis 30 Hari <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-outline" href="#demo" data-open-demo="desktop">Coba Demo Admin</a>
       </div>
-      <div class="hero-philosophy"><span>Namaclient di depan, Kliktiva di belakang</span><span>Kliktiva mendorong klien untuk tumbuh</span></div>
+      <div class="hero-philosophy"><span>Gratis 30 hari</span><span>Tanpa kartu kredit</span><span>Siap dalam 30 detik</span></div>
+      <div class="hero-philosophy" style="margin-top:10px;font-weight:600;color:#33415C"><span>Namaclient di depan, Kliktiva di belakang</span><span>Kliktiva mendorong klien untuk tumbuh</span></div>
     </div>
     <div class="hero-visual" aria-label="Ilustrasi website klien Kliktiva">
-      <div class="float-note note-address"><div class="float-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg></div><div><strong>Nama brand-mu di depan</strong><small>Bukan di belakang nama platform</small></div></div>
+      <div class="float-note note-address"><div class="float-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg></div><div><strong>Nama <span class="nw">brand-mu</span> di depan</strong><small>Bukan di belakang nama platform</small></div></div>
       <div class="mock-browser">
         <div class="mock-top"><i></i><i></i><i></i><div class="mock-address">https://<b>namaclient</b>.kliktiva.my.id</div></div>
         <div class="mock-page">
@@ -499,7 +562,8 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
     <div class="biz-grid" id="bizGrid"></div>
     <div class="biz-foot">
       <p>Usahamu tidak ada di daftar? Ceritakan saja, kami siapkan tampilan yang sesuai.</p>
-      <a class="btn btn-primary" href="#kontak">Konsultasi gratis</a>
+      <a class="btn btn-primary" href="#template">Lihat semua template</a>
+      <a class="btn btn-line" href="#kontak">Konsultasi gratis</a>
     </div>
   </div>
 </section>
@@ -510,14 +574,15 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
     <div class="section-heading">
       <span class="eyebrow">Coba sebelum memutuskan</span>
       <h2>Lihat sendiri <span class="gradient-text">cara kerjanya.</span></h2>
-      <p>Jelajahi Web Admin yang nanti kamu gunakan untuk mengelola website, lengkap dengan data contoh. Atau lihat langsung pilihan tampilan untuk jenis usahamu.</p>
+      <p>Jelajahi Web Admin yang nanti kamu gunakan untuk mengelola website, lengkap dengan data contoh. Coba dari laptop atau HP, dan bandingkan tampilan Paket Free dengan paket berbayar.</p>
     </div>
     <div class="demo-tabs" role="tablist" aria-label="Pilihan demo">
       <button class="demo-tab" role="tab" id="tab-desktop" aria-controls="panel-desktop" aria-selected="true" data-tab="desktop"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Demo Admin Desktop</button>
       <button class="demo-tab" role="tab" id="tab-mobile" aria-controls="panel-mobile" aria-selected="false" data-tab="mobile"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>Demo Admin Mobile</button>
-      <button class="demo-tab" role="tab" id="tab-gallery" aria-controls="panel-gallery" aria-selected="false" data-tab="gallery"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Galeri Template</button>
     </div>
     <p class="demo-caption" id="demoCaption"></p>
+    <div class="plan-switch"><span>Lihat sebagai:</span><div class="plan-seg" role="group" aria-label="Pilih paket demo"><button type="button" data-plan="free" aria-pressed="true">Paket Free</button><button type="button" data-plan="paid" aria-pressed="false">Paket Berbayar</button></div></div>
+    <p class="plan-note" id="planNote"></p>
 
     <div class="demo-panel active" id="panel-desktop" role="tabpanel" aria-labelledby="tab-desktop">
       <div class="desk-frame">
@@ -540,11 +605,6 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       </div>
     </div>
 
-    <div class="demo-panel" id="panel-gallery" role="tabpanel" aria-labelledby="tab-gallery">
-      <div class="gallery-filter" id="galleryFilter" aria-label="Filter jenis bisnis"></div>
-      <div class="gallery-grid" id="galleryGrid"></div>
-    </div>
-
     <p class="demo-note">Semua data di demo adalah contoh. Perubahanmu tidak tersimpan dan tidak memengaruhi website mana pun.</p>
 
     <div class="demo-points">
@@ -555,21 +615,46 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   </div>
 </section>
 
+<!-- 3b. TEMPLATE -->
+<section class="section section-soft" id="template">
+  <div class="container-wide">
+    <div class="section-heading">
+      <span class="eyebrow">Template Kliktiva</span>
+      <h2>Ratusan template. Puluhan font. <span class="gradient-text">Satu klik, langsung jadi.</span></h2>
+      <p>Lupakan desain dari nol. Pilih tampilan yang dirancang khusus untuk jenis usahamu, dari etalase affiliator yang elegan, menu kuliner yang menggoda, sampai profil jasa profesional yang berwibawa. Ganti template, font, dan warna kapan saja, dan semua produkmu langsung tampil dengan gaya baru tanpa mengetik ulang apa pun.</p>
+    </div>
+    <div class="tpl-stats">
+      <div class="tpl-stat"><strong>Ratusan</strong><span>template siap pakai</span></div>
+      <div class="tpl-stat"><strong>9</strong><span>kategori bisnis</span></div>
+      <div class="tpl-stat"><strong>Puluhan</strong><span>font, sans hingga serif</span></div>
+      <div class="tpl-stat"><strong>1 klik</strong><span>ganti tampilan kapan saja</span></div>
+    </div>
+    <div class="gallery-filter" id="galleryFilter" aria-label="Filter jenis bisnis"></div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="tpl-foot">
+      <p>Semua template termasuk di setiap paket, juga Paket Free. Ketuk template mana pun untuk melihat tampilan penuhnya.</p>
+      <a class="btn btn-gradient" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-line" href="#kontak">Konsultasi gratis</a>
+    </div>
+  </div>
+</section>
+
 <!-- 4. LAYANAN -->
-<section class="section section-soft" id="layanan">
+<section class="section" id="layanan">
   <div class="container">
     <div class="section-heading">
       <span class="eyebrow">Layanan Kliktiva</span>
-      <h2>Kami siapkan websitenya. <span class="gradient-text">Kamu yang pegang kendali.</span></h2>
-      <p>Setiap klien mendapat website katalog sendiri, akses Web Admin untuk mengelolanya, dan pilihan personalisasi sesuai kebutuhan brand.</p>
+      <h2><span class="nw">Website-mu</span> siap dalam 30 detik. <span class="gradient-text">Kamu yang pegang kendali.</span></h2>
+      <p>Daftar, pilih nama subdomain, dan website katalogmu langsung aktif. Setiap klien mendapat website sendiri, Web Admin untuk mengelolanya, dan pilihan personalisasi sesuai kebutuhan brand.</p>
     </div>
     <div class="service-grid">
       <article class="service-card">
         <div class="service-num">01</div>
-        <h3>Website atas nama brand-mu</h3>
-        <p>Alamat web sendiri seperti namaclient.kliktiva.my.id, dengan tampilan yang disesuaikan jenis usahamu.</p>
+        <h3>Website atas nama <span class="nw">brand-mu</span></h3>
+        <p>Alamat web sendiri seperti namaclient.kliktiva.my.id, aktif begitu kamu selesai mendaftar.</p>
         <ul class="check-list">
-          <li>Alamat dengan nama brand-mu di depan</li>
+          <li>Alamat dengan nama <span class="nw">brand-mu</span> di depan</li>
+          <li>Daftar pakai akun Google atau email, langsung aktif</li>
           <li>Tampilan sesuai model bisnis, dari affiliator sampai jasa profesional</li>
           <li>Siap dipasang di bio semua media sosial</li>
           <li>Tampil rapi saat link dibagikan ke WhatsApp atau media sosial (judul, deskripsi, dan gambar)</li>
@@ -585,6 +670,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
           <li>Link ke Shopee, TikTok Shop, WhatsApp, atau kanal lain</li>
           <li>Preview langsung sebelum disimpan</li>
           <li>Analytics: kunjungan dan klik produk/link</li>
+          <li>Perpanjang dan bayar langsung dari dashboard</li>
         </ul>
       </article>
       <article class="service-card">
@@ -601,8 +687,8 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       </article>
     </div>
     <div class="service-cta">
-      <a class="btn btn-gradient" href="#kontak">Konsultasi gratis <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <p>Ceritakan usahamu, kami bantu tentukan paket yang sesuai.</p>
+      <div class="cta-actions"><a class="btn btn-gradient" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-line" href="#kontak">Konsultasi gratis</a></div>
+      <p>Mulai gratis 30 hari, atau ceritakan kebutuhanmu ke tim kami.</p>
     </div>
   </div>
 </section>
@@ -614,7 +700,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <span class="eyebrow">Filosofi Kliktiva</span>
       <h2>Namaclient di depan, <span class="gradient-text">Kliktiva di belakang.</span></h2>
       <p class="sub">Kliktiva mendorong klien untuk tumbuh.</p>
-      <p class="why">Kenapa kami memilih di belakang? Karena mendorong selalu dilakukan dari belakang. Namamu yang dikenal pelanggan, brand-mu yang bersinar, dan kami bekerja di balik layar memastikan bisnismu terus melaju.</p>
+      <p class="why">Kenapa kami memilih di belakang? Karena mendorong selalu dilakukan dari belakang. Namamu yang dikenal pelanggan, <span class="nw">brand-mu</span> yang bersinar, dan kami bekerja di balik layar memastikan bisnismu terus melaju.</p>
     </div>
     <div class="address-hero"><div class="address-pill"><span class="front">namaclient</span><span class="back">.kliktiva.my.id</span></div></div>
     <div class="address-tags"><span>↑ Namamu, di depan</span><span>↑ Kami, mendorong dari belakang</span></div>
@@ -623,7 +709,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <div class="pillar"><h3>Kamu Klien, bukan user.</h3><p>Di platform lain kamu hanya satu akun di belakang nama mereka. Di Kliktiva kamu klien. Namamu tampil di depan, namaclient.kliktiva.my.id, dan kami bekerja di belakangmu.</p></div>
       <div class="pillar"><h3>Bantu orang klik bisnismu.</h3><p>Website yang rapi dan jelas membantu pengunjung mengklik produkmu, lalu membeli, memesan, atau menghubungimu.</p></div>
       <div class="pillar"><h3>Murah, tapi lengkap.</h3><p>Katalog, koleksi, link, identitas brand, dan Analytics dalam satu tempat, dengan biaya yang terjangkau untuk usaha yang baru mulai.</p></div>
-      <div class="pillar"><h3>Develop tanpa batas.</h3><p>Sistem, fitur, dan template baru terus ditambahkan secara berkala, mengikuti kebutuhan bisnismu. Website-mu ikut berkembang tanpa perlu dibuat ulang.</p></div>
+      <div class="pillar"><h3>Develop tanpa batas.</h3><p>Sistem, fitur, dan template baru terus ditambahkan secara berkala, mengikuti kebutuhan bisnismu. <span class="nw">Website-mu</span> ikut berkembang tanpa perlu dibuat ulang.</p></div>
     </div>
     <p class="philo-close">Bikin bisnismu mudah diklik dan <span class="gradient-text">siap dipesan.</span></p>
   </div>
@@ -654,15 +740,15 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <p>Kliktiva dirancang untuk bisnis yang ingin tumbuh, bukan sekadar menaruh tautan. Pengunjung melihat satu halaman yang rapi, dan kamu mengelola semuanya sendiri lewat Web Admin, dari laptop maupun HP.</p>
     </div>
     <div class="highlight-grid">
-      <article class="highlight"><div class="hl-num">1</div><h3>Alamat atas nama brand-mu.</h3><p>namaclient.kliktiva.my.id. Namamu di depan, Kliktiva di belakang. Karena kami ada untuk mendorong bisnismu tumbuh, dan mendorong selalu dilakukan dari belakang.</p></article>
+      <article class="highlight"><div class="hl-num">1</div><h3>Alamat atas nama <span class="nw">brand-mu</span>.</h3><p>namaclient.kliktiva.my.id. Namamu di depan, Kliktiva di belakang. Karena kami ada untuk mendorong bisnismu tumbuh, dan mendorong selalu dilakukan dari belakang.</p></article>
       <article class="highlight"><div class="hl-num">2</div><h3>Katalog produk &amp; jasa tanpa batas.</h3><p>Tambahkan sebanyak yang kamu butuhkan, kelompokkan dalam koleksi, dan atur urutannya sesuai keinginanmu.</p></article>
       <article class="highlight"><div class="hl-num">3</div><h3>Analytics yang memberi jawaban.</h3><p>Bukan hanya jumlah klik. Kamu tahu produk paling dicari, sumber pengunjung, sampai jam terbaik untuk posting, dan riwayatnya tidak pernah hangus.</p><a class="more" href="#analytics">Lihat semua Analytics →</a></article>
-      <article class="highlight"><div class="hl-num">4</div><h3>Tampilan untuk 9 jenis bisnis.</h3><p>Pilihan tampilan untuk setiap model usaha, 30 pilihan font, dan palet warna yang bisa disesuaikan dengan brand-mu.</p><a class="more" href="#demo" data-open-demo="gallery">Lihat Galeri Template →</a></article>
+      <article class="highlight"><div class="hl-num">4</div><h3>Tampilan untuk 9 jenis bisnis.</h3><p>Ratusan template untuk setiap model usaha, puluhan pilihan font, dan palet warna yang bisa disesuaikan dengan <span class="nw">brand-mu</span>.</p><a class="more" href="#template">Lihat Galeri Template →</a></article>
       <article class="highlight wide"><div class="hl-num">5</div><h3>Siap dibagikan, mudah ditemukan, gampang dihubungi.</h3>
-        <p>Website-mu dilengkapi <b>SEO</b>, singkatan dari <i>Search Engine Optimization</i>, atau <b>optimasi mesin pencari</b>. Artinya, website-mu disiapkan agar mudah dipahami dan ditampilkan oleh Google saat orang mencari nama brand, produk, atau usahamu.</p>
+        <p><span class="nw">Website-mu</span> dilengkapi <b>SEO</b>, singkatan dari <i>Search Engine Optimization</i>, atau <b>optimasi mesin pencari</b>. Artinya, <span class="nw">website-mu</span> disiapkan agar mudah dipahami dan ditampilkan oleh Google saat orang mencari nama brand, produk, atau usahamu.</p>
         <p><b>Kenapa penting?</b> Pelanggan tidak hanya datang dari bio media sosial. Banyak yang mencari lewat Google lebih dulu sebelum membeli. Kalau bisnismu muncul dengan judul dan deskripsi yang jelas, kamu terlihat lebih profesional, lebih dipercaya, dan lebih mudah ditemukan.</p>
-        <p style="margin-bottom:0">Di Web Admin, kamu bisa mengisi <b>SEO title</b> dan <b>SEO description</b> sendiri, lengkap dengan panduan panjang karakter dan ide kata kunci. Bonusnya, link-mu tampil rapi dengan judul, deskripsi, dan gambar saat dibagikan ke WhatsApp dan media sosial.</p></article>
-      <article class="highlight"><div class="hl-num">6</div><h3>Develop tanpa batas.</h3><p>Sistem, fitur, dan template baru terus ditambahkan secara berkala. Website-mu ikut berkembang tanpa perlu dibuat ulang.</p></article>
+        <p style="margin-bottom:0">Di Web Admin, kamu bisa mengisi <b>SEO title</b> dan <b>SEO description</b> sendiri, lengkap dengan panduan panjang karakter dan ide kata kunci. Bonusnya, <span class="nw">link-mu</span> tampil rapi dengan judul, deskripsi, dan gambar saat dibagikan ke WhatsApp dan media sosial.</p></article>
+      <article class="highlight"><div class="hl-num">6</div><h3>Develop tanpa batas.</h3><p>Sistem, fitur, dan template baru terus ditambahkan secara berkala. <span class="nw">Website-mu</span> ikut berkembang tanpa perlu dibuat ulang.</p></article>
     </div>
     <div class="feature-groups">
       <div class="fgroup"><h4>Identitas &amp; Home Page</h4><ul>
@@ -676,15 +762,19 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
         <li>Foto, harga tampil, dan deskripsi per produk</li>
         <li>Tombol tujuan per produk: link marketplace/affiliate atau langsung ke WhatsApp</li>
         <li>Status Publikasikan / Draft, untuk menyiapkan produk sebelum tayang</li>
-        <li>Koleksi dan produk favorit di halaman utama</li></ul></div>
+        <li>Koleksi dan produk favorit di halaman utama</li>
+        <li>Halaman detail produk dengan foto lengkap</li>
+        <li>Atur potongan foto: 1:1, 4:5, 3:4, 4:3, atau asli</li>
+        <li>Foto otomatis dikompres agar website tetap ringan dan cepat</li></ul></div>
       <div class="fgroup"><h4>Find Me: Semua Pintu Menuju Bisnismu</h4><div class="tagline">Buat semua orang mudah menghubungimu. Satu sentuhan, langsung tersambung.</div><ul>
         <li><b>WhatsApp</b>: calon pembeli langsung chat kamu, tanpa simpan nomor, tanpa ribet</li>
         <li>Instagram, TikTok, Shopee, YouTube, Facebook, Threads, semua kanalmu dalam satu tempat</li>
         <li>Tautan custom tambahan untuk Tokopedia, website, formulir, atau apa pun yang kamu punya</li>
         <li>Tidak ada lagi pelanggan yang bingung harus menghubungimu di mana</li></ul></div>
       <div class="fgroup"><h4>Tampilan</h4><ul>
-        <li>Pilihan tampilan sesuai 9 jenis bisnis</li>
-        <li>30 pilihan font, dari sans modern sampai serif elegan</li>
+        <li>Ratusan template untuk 9 jenis bisnis</li>
+        <li>Puluhan pilihan font, dari sans modern sampai serif elegan</li>
+        <li>Pencarian produk 🔍 untuk pengunjung: hasil muncul saat mengetik</li>
         <li>Palet warna website</li>
         <li>Preview dua mode: Template Asli dan Versi Data Anda</li>
         <li>Simpan manual, sehingga tidak ada perubahan yang tayang tanpa sengaja</li></ul></div>
@@ -695,7 +785,10 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
         <li>Web Admin dari laptop maupun HP</li>
         <li>Bahasa Admin Indonesia / English</li>
         <li>Management Akun: tambah admin dengan username dan role sendiri</li>
-        <li>Aktivasi dengan kode lisensi per klien</li></ul></div>
+        <li>Masuk dengan akun Google, atau email dan password</li>
+        <li>Satu akun bisa mengelola banyak website</li>
+        <li>Pengingat otomatis 3 hari sebelum masa aktif habis</li>
+        <li>Bayar dan perpanjang lewat transfer bank atau QRIS dari dashboard</li></ul></div>
     </div>
     <p class="feature-close">Semua fitur ini sudah termasuk. <span class="gradient-text">Dan daftarnya akan terus bertambah.</span></p>
   </div>
@@ -733,7 +826,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <div class="metric"><div class="mi">🗂️</div><h3>Koleksi Paling Banyak Dibuka</h3><p>Temukan kategori yang paling menarik perhatian, lalu perbanyak stoknya.</p></div>
       <div class="metric"><div class="mi">📲</div><h3>Klik Tautan Sosial</h3><p>Instagram, TikTok, YouTube, atau Shopee? Lihat kanal mana yang benar-benar bekerja untukmu.</p></div>
       <div class="metric"><div class="mi">🧭</div><h3>Sumber Trafik</h3><p>Dari mana pengunjungmu datang. Berhenti membuang tenaga di kanal yang sepi.</p></div>
-      <div class="metric"><div class="mi">📱</div><h3>Perangkat Pengunjung</h3><p>HP atau laptop? Pahami cara audiens melihat website-mu.</p></div>
+      <div class="metric"><div class="mi">📱</div><h3>Perangkat Pengunjung</h3><p>HP atau laptop? Pahami cara audiens melihat <span class="nw">website-mu</span>.</p></div>
       <div class="metric"><div class="mi">📍</div><h3>Lokasi Pengunjung</h3><p>Perkiraan kota asal audiensmu, cocok untuk menentukan target promosi dan ongkir.</p></div>
       <div class="metric"><div class="mi">📈</div><h3>Tren Harian</h3><p>Naik atau turun? Lihat dampak setiap konten dan promo dari hari ke hari.</p></div>
       <div class="metric"><div class="mi">⏱️</div><h3>Klik per Jam</h3><p>Detik-detik saat audiensmu paling aktif mengklik, terlihat jam demi jam.</p></div>
@@ -754,69 +847,93 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   <div class="container">
     <div class="section-heading">
       <span class="eyebrow">Cara menjadi klien</span>
-      <h2>Dari konsultasi sampai <span class="gradient-text">website-mu live.</span></h2>
+      <h2>Dari demo epik, sampai <span class="gradient-text nw">website-mu live.</span></h2>
     </div>
     <div class="steps">
-      <div class="step"><span class="num">01</span><h3>Konsultasi gratis</h3><p>Ceritakan usaha, produk atau jasa, dan kanal pemesananmu.</p></div>
-      <div class="step"><span class="num">02</span><h3>Pilih tampilan</h3><p>Coba Demo Admin dan pilih template dari galeri sesuai jenis usahamu.</p></div>
-      <div class="step"><span class="num">03</span><h3>Pilih paket</h3><p>Paket standar atau personalisasi, sesuai kebutuhan dan anggaran.</p></div>
-      <div class="step"><span class="num">04</span><h3>Website live</h3><p>Website-mu tayang di <b>namaclient.kliktiva.my.id</b> dan kamu menerima akses Web Admin.</p></div>
-      <div class="step grow"><span class="num">05</span><h3>Tumbuh bersama</h3><p>Kelola sendiri setiap hari dan nikmati update fitur serta template berkala.</p></div>
+      <div class="step"><span class="num">01</span><h3>Cek Demo</h3><p>Coba Demo Admin dan lihat galeri tampilan sesuai jenis usahamu.</p><a class="step-link" href="#demo">Buka Demo →</a></div>
+      <div class="step"><span class="num">02</span><h3>Daftar</h3><p>Masuk dengan akun Google atau email di app.kliktiva.my.id, lalu pilih nama <span class="nw">subdomain-mu</span>.</p><a class="step-link" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar sekarang →</a></div>
+      <div class="step"><span class="num">03</span><h3>Pilih Paket Gratis</h3><p>Mulai dengan Paket Free 30 hari, semua fitur terbuka. Upgrade kapan saja saat siap.</p></div>
+      <div class="step"><span class="num">04</span><h3>Website Live</h3><p><span class="nw">Website-mu</span> langsung tayang di <b>namaclient.kliktiva.my.id</b> dan bisa dikelola lewat Web Admin.</p></div>
+      <div class="step grow"><span class="num">05</span><h3>Tumbuh Bersama</h3><p>Kelola sendiri setiap hari dan nikmati update fitur serta template berkala.</p></div>
     </div>
   </div>
 </section>
 
 <!-- HARGA -->
 <section class="section section-soft" id="harga">
-  <div class="container">
+  <div class="container-wide">
     <div class="section-heading">
       <span class="eyebrow">Harga</span>
-      <h2>Murah, tapi lengkap. <span class="gradient-text">Mulai Rp25.000 per bulan.</span></h2>
-      <p>Satu harga langganan sudah mencakup website atas nama brand-mu, Web Admin, katalog tanpa batas, Analytics, dan update fitur berkala.</p>
+      <h2>Murah, tapi lengkap. <span class="gradient-text">Mulai gratis <span class="nw">30 hari.</span></span></h2>
+      <p>Coba semua fitur tanpa bayar selama 30 hari. Setelah itu lanjut mulai Rp25.000 per bulan, atau hemat lebih banyak dengan paket tahunan.</p>
     </div>
-    <div class="price-grid">
+    <div class="price-grid four">
+      <article class="price-card">
+        <div class="price-label">Free</div>
+        <div class="price-from">Coba semua fitur, gratis</div>
+        <div class="price-amount">Rp0<small> /30 hari</small></div>
+        <p class="price-fine">1× per akun &amp; nomor WhatsApp. Ada label kecil “Dibuat dengan Kliktiva”.</p>
+        <p>Fitur lengkap seperti paket berbayar. Tanpa kartu kredit, langsung aktif dalam 30 detik.</p>
+        <ul class="check-list">
+          <li>Semua fitur paket berbayar</li>
+          <li>Website atas nama <span class="nw">brand-mu</span>: namaclient.kliktiva.my.id</li>
+          <li>Web Admin dari laptop maupun HP</li>
+          <li>Katalog produk &amp; jasa tanpa batas</li>
+          <li>Ratusan template &amp; puluhan font</li>
+          <li>Pencarian produk dan halaman detail produk</li>
+        </ul>
+        <a class="btn btn-outline" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang</a>
+      </article>
       <article class="price-card">
         <div class="price-label">Bulanan</div>
-        <div class="price-from">Biaya langganan mulai</div>
+        <div class="price-from">Biaya langganan</div>
         <div class="price-amount">Rp25.000<small> /bulan</small></div>
-        <p>Pas untuk usaha yang baru mulai dan ingin langsung tampil profesional.</p>
+        <p class="price-fine">Website bersih tanpa label “Dibuat dengan Kliktiva”.</p>
+        <p>Pas untuk usaha yang ingin tampil profesional dengan biaya ringan setiap bulan.</p>
         <ul class="check-list">
-          <li>Alamat namaclient.kliktiva.my.id</li>
-          <li>Web Admin untuk kelola sendiri</li>
+          <li>Website atas nama <span class="nw">brand-mu</span>: namaclient.kliktiva.my.id</li>
+          <li>Web Admin dari laptop maupun HP</li>
           <li>Katalog produk &amp; jasa tanpa batas</li>
-          <li>Analytics lengkap dan update fitur berkala</li>
+          <li>Ratusan template &amp; puluhan font</li>
+          <li>Pencarian produk dan halaman detail produk</li>
+          <li>Analytics lengkap &amp; riwayat tanpa batas waktu</li>
+          <li>SEO dan tampilan rapi saat link dibagikan</li>
+          <li>Update fitur dan template berkala</li>
         </ul>
-        <a class="btn btn-outline" href="#kontak" data-admin-wa="Halo Admin Kliktiva, saya ingin tanya paket langganan bulanan Kliktiva.">Hubungi Admin</a>
+        <a class="btn btn-outline" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang</a>
       </article>
       <article class="price-card price-featured">
-        <span class="price-badge">Lebih hemat</span>
+        <span class="price-badge">Hemat Rp50.000</span>
         <div class="price-label">Tahunan</div>
         <div class="price-from">Bayar setahun, lebih hemat</div>
-        <div class="price-amount">Bisa nego<small> harga</small></div>
-        <p>Semua yang ada di paket bulanan, dengan harga tahunan yang lebih ringan. Ceritakan kebutuhanmu, kita cari harga terbaik bersama.</p>
+        <div class="price-amount">Rp250.000<small> /tahun</small></div>
+        <p class="price-fine">Setara Rp20.833/bulan, gratis 2 bulan.</p>
+        <p>Semua yang ada di paket bulanan, dengan total biaya lebih ringan untuk setahun penuh.</p>
         <ul class="check-list">
-          <li>Semua fitur paket bulanan</li>
-          <li>Total biaya lebih hemat dibanding bulanan</li>
-          <li>Harga bisa dinegosiasikan</li>
-          <li>Bisa digabung dengan paket personalisasi</li>
+          <li>Semua fitur paket Bulanan</li>
+          <li>Hemat Rp50.000 dibanding bayar bulanan</li>
+          <li>Tanpa repot perpanjang setiap bulan</li>
+          <li>Website bersih tanpa label promosi</li>
         </ul>
-        <a class="btn btn-gradient" href="#kontak" data-admin-wa="Halo Admin Kliktiva, saya ingin nego harga paket langganan tahunan Kliktiva.">Hubungi Admin</a>
+        <a class="btn btn-gradient" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang</a>
       </article>
       <article class="price-card">
-        <div class="price-label">Personalisasi</div>
-        <div class="price-from">Sesuai kebutuhan brand-mu</div>
-        <div class="price-amount">Nego<small> harga</small></div>
+        <div class="price-label">Personal</div>
+        <div class="price-from">Sesuai kebutuhan <span class="nw">brand-mu</span></div>
+        <div class="price-amount">Nego<small> ke Admin</small></div>
         <p>Untuk brand yang ingin tampil lebih khas. Ceritakan kebutuhanmu, kami susun paket dan harga yang pas.</p>
         <ul class="check-list">
           <li>Warna, font, dan gaya visual mengikuti identitas brand</li>
           <li>Susunan halaman disesuaikan kebutuhan usaha</li>
           <li>Pendampingan dari tim Kliktiva</li>
-          <li>Bisa bulanan atau tahunan</li>
+          <li>Masa aktif dan harga sesuai kesepakatan</li>
         </ul>
-        <a class="btn btn-outline" href="#kontak" data-admin-wa="Halo Admin Kliktiva, saya ingin konsultasi paket personalisasi sesuai kebutuhan brand saya.">Hubungi Admin</a>
+        <a class="btn btn-outline" href="#kontak" data-admin-wa="Halo Admin Kliktiva, saya ingin konsultasi Paket Personal sesuai kebutuhan brand saya.">Hubungi Admin</a>
       </article>
     </div>
-    <p class="price-note">Klaim diskon spesial dan free trial <span data-free-trial-days>14</span> hari. Hubungi Admin untuk detail paket dan personalisasi.</p>
+    <div class="pay-strip"><span>Bayar via transfer bank atau QRIS</span><span>Konfirmasi cukup upload bukti di dashboard</span><span>Masa aktif lanjut tanpa ada hari yang hilang</span></div>
+    <p class="legal-note">Dengan mendaftar, kamu menyetujui <a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a> dan <a href="kebijakan-pengembalian.html">Kebijakan Pengembalian Dana</a> Kliktiva.</p>
+    <p class="price-note">Klaim diskon spesial dengan menghubungi Admin. Butuh paket personal khusus? <a href="#kontak" style="color:var(--blue)">Konsultasi gratis</a>.</p>
   </div>
 </section>
 
@@ -824,8 +941,11 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
 <section class="cta-band">
   <div class="container">
     <h2>Bikin bisnismu mudah diklik dan siap dipesan.</h2>
-    <p>Ceritakan usahamu. Kami siapkan website katalog atas nama brand-mu.</p>
-    <a class="btn btn-light" href="#kontak">Konsultasi gratis <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p>Mulai gratis 30 hari, atau ceritakan kebutuhanmu ke tim kami.</p>
+    <div class="cta-actions">
+      <a class="btn btn-light" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Daftar Sekarang <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost-light" href="#kontak">Konsultasi gratis</a>
+    </div>
   </div>
 </section>
 
@@ -834,14 +954,18 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   <div class="container">
     <div class="section-heading"><span class="eyebrow">FAQ</span><h2>Pertanyaan yang sering muncul.</h2><p>Informasi dasar sebelum menjadi klien Kliktiva.</p></div>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apa itu Kliktiva?</span><span class="faq-plus">+</span></button><div class="faq-answer">Kliktiva menyiapkan website katalog untuk usahamu dengan alamat atas nama brand-mu sendiri, seperti namaclient.kliktiva.my.id. Di dalamnya kamu bisa menampilkan produk, jasa, koleksi, dan semua link pemesanan, lalu mengelolanya sendiri lewat Web Admin.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apa itu Kliktiva?</span><span class="faq-plus">+</span></button><div class="faq-answer">Kliktiva adalah layanan website katalog dengan alamat atas nama <span class="nw">brand-mu</span> sendiri, seperti namaclient.kliktiva.my.id, yang bisa kamu buat sendiri dalam hitungan detik. Di dalamnya kamu bisa menampilkan produk, jasa, koleksi, dan semua link pemesanan, lalu mengelolanya sendiri lewat Web Admin.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Bagaimana cara daftar?</span><span class="faq-plus">+</span></button><div class="faq-answer">Buka <a href="https://app.kliktiva.my.id/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">app.kliktiva.my.id</a>, masuk dengan akun Google atau email dan password, lalu pilih nama subdomain untuk <span class="nw">website-mu</span>. Pilih Paket Free, dan <span class="nw">website-mu</span> langsung aktif dalam hitungan detik.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apa beda Paket Free dan paket berbayar?</span><span class="faq-plus">+</span></button><div class="faq-answer">Fiturnya sama lengkap. Bedanya, website Paket Free menampilkan satu baris kecil “Dibuat dengan Kliktiva” di bagian paling bawah dan berlaku 30 hari. Paket Free bisa dipakai satu kali per akun dan per nomor WhatsApp. Website berbayar tampil bersih tanpa label tersebut.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Bagaimana cara bayar?</span><span class="faq-plus">+</span></button><div class="faq-answer">Dari dashboard, pilih paket lalu transfer ke rekening atau scan QRIS sesuai nominal tagihan. Setelah itu upload bukti bayar. Begitu Admin memverifikasi, status <span class="nw">website-mu</span> langsung aktif. Selama menunggu verifikasi, website tetap tampil.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apa yang terjadi kalau masa aktif habis?</span><span class="faq-plus">+</span></button><div class="faq-answer">Tiga hari sebelumnya kamu mendapat pengingat di Web Admin. Kalau masa aktif habis, website menampilkan pesan “sedang tidak aktif”, tetapi semua datamu tetap aman. Cukup perpanjang dari dashboard, dan masa aktif baru dihitung lanjut tanpa ada hari yang hilang.</div></div>
       <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Kenapa disebut klien, bukan user?</span><span class="faq-plus">+</span></button><div class="faq-answer">Di layanan link bio pada umumnya, kamu hanya satu akun di belakang nama platform mereka. Di Kliktiva, namamu tampil di depan dan kami bekerja di belakang. Namaclient di depan, Kliktiva di belakang, karena kami ada untuk mendorong bisnismu tumbuh.</div></div>
-      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Jenis usaha apa saja yang bisa memakai Kliktiva?</span><span class="faq-plus">+</span></button><div class="faq-answer">Semua jenis usaha. Kami sudah menyiapkan tampilan untuk affiliator, content creator, UMKM, edukasi, marketing/agency, kuliner, komunitas dan organisasi, entertainment, serta jasa profesional. Usahamu tidak ada di daftar? Ceritakan saat konsultasi, kami siapkan tampilan yang sesuai.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Jenis usaha apa saja yang bisa memakai Kliktiva?</span><span class="faq-plus">+</span></button><div class="faq-answer">Semua jenis usaha. Kami sudah menyiapkan tampilan untuk affiliator, content creator, UMKM, edukasi, marketing/agency, kuliner, komunitas dan organisasi, entertainment, serta jasa profesional. Usahamu tidak ada di daftar? Pilih template yang paling mendekati, atau ceritakan kebutuhanmu lewat konsultasi gratis.</div></div>
       <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apakah saya bisa mengubah isi website sendiri?</span><span class="faq-plus">+</span></button><div class="faq-answer">Bisa. Setiap klien mendapat akses Web Admin untuk mengubah identitas brand, produk, harga, koleksi, link, dan tampilan kapan saja, dari laptop maupun HP. Ada preview sebelum disimpan, jadi tidak ada perubahan yang tayang tanpa sengaja.</div></div>
-      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apakah website saya akan mendapat fitur baru?</span><span class="faq-plus">+</span></button><div class="faq-answer">Ya. Kliktiva menganut prinsip develop tanpa batas: sistem, fitur, dan template baru ditambahkan secara berkala. Website-mu ikut berkembang tanpa perlu dibuat ulang.</div></div>
-      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apa itu paket personalisasi?</span><span class="faq-plus">+</span></button><div class="faq-answer">Paket untuk brand yang ingin tampil lebih khas dari tampilan standar: warna, font, dan gaya visual mengikuti identitas brand, susunan halaman disesuaikan kebutuhan usaha, serta pendampingan dari tim Kliktiva. Detail paket dan harga dibahas saat konsultasi.</div></div>
-      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apakah Kliktiva menjamin penjualan meningkat?</span><span class="faq-plus">+</span></button><div class="faq-answer"><p style="margin:0 0 10px">Kliktiva dirancang untuk mendorong penjualanmu dari berbagai sisi:</p><ul style="margin:0 0 12px;padding-left:20px;display:grid;gap:6px"><li><b>Lebih dipercaya.</b> Alamat web atas nama brand-mu membuat bisnismu terlihat profesional sejak klik pertama. Pengunjung yang percaya lebih berani membeli.</li><li><b>Lebih cepat memutuskan.</b> Produk, harga, dan foto tersusun rapi dalam koleksi, jadi calon pembeli langsung menemukan yang dicari tanpa bertanya berulang kali.</li><li><b>Lebih sedikit pembeli yang hilang.</b> Tombol WhatsApp, Shopee, TikTok Shop, atau form pemesanan selalu satu sentuhan saja. Tidak ada lagi calon pembeli yang batal karena bingung cara memesan.</li><li><b>Promosi lebih tepat sasaran.</b> Analytics menunjukkan produk paling dicari, kanal yang paling menghasilkan, dan jam terbaik untuk posting. Kamu bisa fokus mempromosikan yang terbukti diminati, di waktu yang tepat.</li></ul><p style="margin:0">Semakin rutin kamu memperbarui katalog dan memakai data Analytics untuk promosi, semakin besar peluang setiap klik berubah menjadi pesanan.</p></div></div>
-      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Berapa biayanya?</span><span class="faq-plus">+</span></button><div class="faq-answer">Biaya langganan mulai <b>Rp25.000 per bulan</b>. Paket tahunan lebih hemat dan harganya bisa dinegosiasikan. Kliktiva dirancang murah tapi lengkap, supaya usaha yang baru mulai pun bisa tampil profesional. <a href="#harga" style="color:var(--blue);font-weight:700">Lihat harga</a>. Hubungi Kliktiva sekarang untuk klaim diskon spesial dan free trial <span data-free-trial-days>14</span> hari.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apakah website saya akan mendapat fitur baru?</span><span class="faq-plus">+</span></button><div class="faq-answer">Ya. Kliktiva menganut prinsip develop tanpa batas: sistem, fitur, dan template baru ditambahkan secara berkala. <span class="nw">Website-mu</span> ikut berkembang tanpa perlu dibuat ulang.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apa itu paket personalisasi?</span><span class="faq-plus">+</span></button><div class="faq-answer">Paket untuk brand yang ingin tampil lebih khas dari tampilan standar: warna, font, dan gaya visual mengikuti identitas brand, susunan halaman disesuaikan kebutuhan usaha, serta pendampingan dari tim Kliktiva. Harga Paket Personal dinegosiasikan langsung dengan Admin.</div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Apakah Kliktiva menjamin penjualan meningkat?</span><span class="faq-plus">+</span></button><div class="faq-answer"><p style="margin:0 0 10px">Kliktiva dirancang untuk mendorong penjualanmu dari berbagai sisi:</p><ul style="margin:0 0 12px;padding-left:20px;display:grid;gap:6px"><li><b>Lebih dipercaya.</b> Alamat web atas nama <span class="nw">brand-mu</span> membuat bisnismu terlihat profesional sejak klik pertama. Pengunjung yang percaya lebih berani membeli.</li><li><b>Lebih cepat memutuskan.</b> Produk, harga, dan foto tersusun rapi dalam koleksi, jadi calon pembeli langsung menemukan yang dicari tanpa bertanya berulang kali.</li><li><b>Lebih sedikit pembeli yang hilang.</b> Tombol WhatsApp, Shopee, TikTok Shop, atau form pemesanan selalu satu sentuhan saja. Tidak ada lagi calon pembeli yang batal karena bingung cara memesan.</li><li><b>Promosi lebih tepat sasaran.</b> Analytics menunjukkan produk paling dicari, kanal yang paling menghasilkan, dan jam terbaik untuk posting. Kamu bisa fokus mempromosikan yang terbukti diminati, di waktu yang tepat.</li></ul><p style="margin:0">Semakin rutin kamu memperbarui katalog dan memakai data Analytics untuk promosi, semakin besar peluang setiap klik berubah menjadi pesanan.</p></div></div>
+      <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Berapa biayanya?</span><span class="faq-plus">+</span></button><div class="faq-answer">Mulai <b>gratis 30 hari</b> dengan Paket Free, fitur lengkap. Setelah itu, Paket Bulanan <b>Rp25.000/bulan</b> atau Paket Tahunan <b>Rp250.000/tahun</b> (hemat Rp50.000). Untuk kebutuhan khusus, Paket Personal harganya bisa dinego dengan Admin. <a href="#harga" style="color:var(--blue);font-weight:700">Lihat harga</a>. Hubungi Admin untuk klaim diskon spesial.</div></div>
     </div>
   </div>
 </section>
@@ -851,13 +975,14 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   <div class="container contact-grid">
     <div class="contact-copy">
       <span class="eyebrow">Konsultasi gratis</span>
-      <h2>Ceritakan usahamu, kami siapkan websitenya.</h2>
-      <p>Jelaskan secara singkat usaha, produk atau jasa, dan kanal pemesanan yang kamu gunakan. Informasi ini membantu kami menyiapkan tampilan dan paket yang paling sesuai.</p>
+      <h2>Butuh paket personal khusus?</h2>
+      <p>Ingin tampilan yang mengikuti identitas brand, susunan halaman khusus, atau pendampingan dari tim kami? Ceritakan kebutuhanmu, dan kami susun Paket Personal dengan harga yang pas. Ingin langsung mulai sendiri? <a href="https://app.kliktiva.my.id/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">Daftar sekarang, gratis 30 hari</a>.</p>
       <div class="contact-points">
-        <div>Alamat web atas nama brand-mu: namaclient.kliktiva.my.id</div>
-        <div>Tampilan sesuai jenis usahamu</div>
-        <div>Akses Web Admin untuk kelola sendiri</div>
+        <div>Warna, font, dan gaya visual mengikuti identitas brand</div>
+        <div>Susunan halaman disesuaikan kebutuhan usaha</div>
+        <div>Pendampingan langsung dari tim Kliktiva</div>
       </div>
+      <div class="contact-phone"><small>Telepon &amp; WhatsApp Kliktiva</small><a href="tel:+6285602703111">+62 856-0270-3111</a><a class="cp-wa" href="https://wa.me/6285602703111" target="_blank" rel="noopener">Chat WhatsApp →</a><span class="contact-extra" data-show="email" hidden>Email: <a data-fill="email" href="#"></a></span><span class="contact-extra" data-show="address" hidden>Alamat: <span data-fill="address"></span></span></div>
     </div>
     <form class="contact-form" id="contactForm">
       <div aria-hidden="true" style="position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important" tabindex="-1"><label for="kliktiva_reference_site_8f2c">Jangan isi kolom ini</label><input autocomplete="new-password" id="kliktiva_reference_site_8f2c" name="kliktiva_reference_site_8f2c" tabindex="-1" type="text" value=""></div>
@@ -866,7 +991,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
         <div class="field"><label for="name">Nama</label><input autocomplete="name" id="name" maxlength="100" name="name" placeholder="Nama kamu" required type="text"></div>
         <div class="field"><label for="phone">Nomor HP</label><input autocomplete="tel" id="phone" inputmode="tel" name="phone" placeholder="Contoh: 0812 3456 7890" required title="Masukkan nomor HP yang valid" type="tel"></div>
         <div class="field"><label for="role">Jenis Usaha</label><select id="role" name="role" required><option disabled selected value="">Pilih jenis usaha</option><option>Affiliator</option><option>Content Creator</option><option>UMKM / Small Business</option><option>Edukasi / Pendidikan</option><option>Marketing / Agency</option><option>Usaha Kuliner</option><option>Komunitas & Organisasi</option><option>Entertainment</option><option>Jasa Profesional</option><option>Reseller / Toko online</option><option>Lainnya</option></select></div>
-        <div class="field"><label for="interest">Kebutuhan</label><select id="interest" name="interest" required><option disabled selected value="">Pilih kebutuhan</option><option>Website katalog (paket standar)</option><option>Paket personalisasi</option><option>Ingin memakai template tertentu</option><option>Belum yakin / ingin diskusi</option><option>Lainnya</option></select></div>
+        <div class="field"><label for="interest">Kebutuhan</label><select id="interest" name="interest" required><option disabled selected value="">Pilih kebutuhan</option><option>Paket Personal</option><option>Website katalog (Bulanan / Tahunan)</option><option>Ingin memakai template tertentu</option><option>Belum yakin / ingin diskusi</option><option>Lainnya</option></select></div>
         <div class="field full"><label id="channelsLabel">Kanal pemesanan atau tautan tujuan</label><details class="multi-select" id="channelsDropdown"><summary id="channelsSummary"><span>Pilih satu atau beberapa kanal</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary><div aria-labelledby="channelsLabel" class="multi-select-options" role="group">
           <label><input name="channels" type="checkbox" value="WhatsApp"><span>WhatsApp</span></label>
           <label><input name="channels" type="checkbox" value="Shopee"><span>Shopee</span></label>
@@ -894,12 +1019,21 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
     <div class="footer-top">
       <div class="footer-brand">
         <img src="assets/kliktiva-logo.png" alt="Kliktiva">
-        <p>Website katalog atas nama brand-mu, untuk affiliator, kreator, UMKM, kuliner, jasa profesional, hingga komunitas. Disiapkan oleh tim Kliktiva, dikelola olehmu.</p>
+        <p>Website katalog atas nama <span class="nw">brand-mu</span>, untuk affiliator, kreator, UMKM, kuliner, jasa profesional, hingga komunitas. Buat sendiri dalam hitungan detik, kelola sendiri kapan saja.</p>
         <div class="footer-tagline"><strong>Namaclient di depan, Kliktiva di belakang.</strong><span>Kliktiva mendorong klien untuk tumbuh.</span></div>
       </div>
+      <div class="footer-contact" id="kontak-kliktiva">
+        <h4>Kontak Kliktiva</h4>
+        <a class="footer-phone" href="tel:+6285602703111">+62 856-0270-3111</a>
+        <span>Telepon &amp; WhatsApp</span>
+        <a href="https://wa.me/6285602703111" target="_blank" rel="noopener">Chat WhatsApp →</a>
+        <a href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">app.kliktiva.my.id</a>
+        <a data-show="email" data-fill="email" hidden href="#"></a>
+        <span data-show="address" data-fill="address" hidden></span>
+      </div>
       <nav class="footer-nav" aria-label="Navigasi footer">
-        <a href="#demo">Demo</a><a href="#jenis-bisnis">Jenis Bisnis</a><a href="#layanan">Layanan</a><a href="#filosofi">Filosofi</a>
-        <a href="#fitur">Fitur</a><a href="#analytics">Analytics</a><a href="#cara-kerja">Proses</a><a href="#harga">Harga</a><a href="#faq">FAQ</a><a href="#kontak">Kontak</a>
+        <a href="#demo">Demo</a><a href="#template">Template</a><a href="#jenis-bisnis">Jenis Bisnis</a><a href="#layanan">Layanan</a><a href="#filosofi">Filosofi</a>
+        <a href="#fitur">Fitur</a><a href="#analytics">Analytics</a><a href="#cara-kerja">Proses</a><a href="#harga">Harga</a><a href="#faq">FAQ</a><a href="#kontak">Kontak</a><a href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Masuk / Daftar</a><a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a><a href="kebijakan-pengembalian.html">Kebijakan Pengembalian Dana</a><a href="https://app.kliktiva.my.id/privasi" target="_blank" rel="noopener">Kebijakan Privasi</a>
       </nav>
     </div>
     <div class="footer-social" id="footerSocial" hidden>
@@ -908,7 +1042,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <div class="social-list" id="socialList"></div>
       <div class="social-sample" id="socialSample" hidden>Contoh tampilan (preview lokal). Di website live, kartu hanya muncul untuk akun yang URL-nya diisi di sheet Settings.</div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> <strong>Kliktiva.</strong> All rights reserved.</span><a class="footer-admin-contact" href="#kontak" id="footerAdminWhatsapp" aria-label="WhatsApp Admin Kliktiva"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.15 1.6 5.96L.05 24l6.27-1.64a11.9 11.9 0 0 0 5.76 1.47h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.5-8.42ZM12.09 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.46 4.44-9.9 9.9-9.9a9.83 9.83 0 0 1 7.01 2.91 9.83 9.83 0 0 1 2.9 7c0 5.46-4.44 9.9-9.92 9.9Z"/></svg><span>WhatsApp Admin</span><strong id="footerAdminWhatsappNumber">Hubungi kami</strong></a></div>
+    <div class="footer-bottom"><span>© <span id="year"></span> <strong>Kliktiva.</strong> All rights reserved.</span><span class="footer-legal"><a href="syarat-ketentuan.html">Syarat &amp; Ketentuan</a><a href="kebijakan-pengembalian.html">Kebijakan Pengembalian Dana</a><a href="https://app.kliktiva.my.id/privasi" target="_blank" rel="noopener">Kebijakan Privasi</a></span><a class="footer-admin-contact" href="https://wa.me/6285602703111" target="_blank" rel="noopener" id="footerAdminWhatsapp" aria-label="WhatsApp Kliktiva di +62 856-0270-3111"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.15 1.6 5.96L.05 24l6.27-1.64a11.9 11.9 0 0 0 5.76 1.47h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.19-3.5-8.42ZM12.09 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.85 9.85 0 0 1-1.51-5.26c0-5.46 4.44-9.9 9.9-9.9a9.83 9.83 0 0 1 7.01 2.91 9.83 9.83 0 0 1 2.9 7c0 5.46-4.44 9.9-9.92 9.9Z"/></svg><span>WhatsApp Kliktiva</span><strong id="footerAdminWhatsappNumber">+62 856-0270-3111</strong></a></div>
   </div>
 </footer>
 
@@ -920,9 +1054,10 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       <small id="tplModalCat"></small>
       <h3 id="tplModalTitle"></h3>
       <p id="tplModalDesc"></p>
-      <p>Isi, foto, dan warna di template ini adalah contoh. Website-mu akan memakai data dan brand-mu sendiri.</p>
+      <p>Isi, foto, dan warna di template ini adalah contoh. <span class="nw">Website-mu</span> akan memakai data dan <span class="nw">brand-mu</span> sendiri.</p>
       <div class="modal-actions">
-        <button class="btn btn-gradient" id="tplConsult" type="button">Konsultasikan template ini</button>
+        <a class="btn btn-gradient" href="https://app.kliktiva.my.id/" target="_blank" rel="noopener">Pakai template ini, Daftar Sekarang</a>
+        <button class="btn btn-outline" id="tplConsult" type="button">Konsultasikan template ini</button>
         <button class="btn btn-outline" id="tplTryAdmin" type="button">Coba di Demo Admin</button>
       </div>
     </div>
@@ -949,7 +1084,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   ];
   const catLabel = c => (BIZ.find(b => b[0] === c) || [c, '', c])[2];
   $('bizGrid').innerHTML = BIZ.map(b => `<button class="biz-card" type="button" data-cat="${b[0]}"><div class="biz-icon">${b[1]}</div><h3>${b[2]}</h3><p>${b[3]}</p><span class="biz-more">Lihat contoh tampilan →</span></button>`).join('');
-  $('bizGrid').addEventListener('click', e => { const c = e.target.closest('[data-cat]'); if (c) { openDemo('gallery', c.dataset.cat); } });
+  $('bizGrid').addEventListener('click', e => { const c = e.target.closest('[data-cat]'); if (c) { openTemplates(c.dataset.cat); } });
 
   /* ---------- Navigasi & FAQ ---------- */
   const menuToggle = $('menuToggle'), navLinks = $('navLinks');
@@ -965,9 +1100,13 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   /* ---------- Demo tabs ---------- */
   const CAPTIONS = {
     desktop: 'Kelola identitas brand, produk, koleksi, tampilan, akun, dan Analytics dari laptop.',
-    mobile: 'Pengalaman yang sama dari HP. Ubah produk atau promo kapan saja, di mana saja.',
-    gallery: 'Pilih jenis usahamu dan lihat tampilan yang siap disiapkan untukmu.'
+    mobile: 'Pengalaman yang sama dari HP. Ubah produk atau promo kapan saja, di mana saja.'
   };
+  const PLAN_NOTES = {
+    free: 'Paket Free: semua fitur terbuka. Di Web Admin tampil “Trial · Aktif sampai …”, dan website menampilkan baris kecil “Dibuat dengan Kliktiva” di paling bawah.',
+    paid: 'Paket berbayar: fitur sama lengkap. Di Web Admin tampil paket dan masa aktif, dan website tampil bersih tanpa label promosi.'
+  };
+  let currentPlan = 'free';
   const DESK_W = 1440, DESK_H = 900;
   let deskFrame = null, phoneFrame = null, galleryBuilt = false, currentCat = 'all';
   function makeFrame(src, title) { const f = document.createElement('iframe'); f.src = src; f.title = title; return f; }
@@ -984,14 +1123,14 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
     if (deskFrame) { deskFrame.style.width = iw + 'px'; deskFrame.style.height = ih + 'px'; deskFrame.style.transform = scale < 1 ? `scale(${scale})` : 'none'; }
   }
   function loadDesk(tab) {
-    const src = 'demo-admin/admin.html?demo=desktop' + (tab ? '&tab=' + tab : '');
+    const src = 'demo-admin/admin.html?demo=desktop&plan=' + currentPlan + (tab ? '&tab=' + tab : '');
     if (!deskFrame) { deskFrame = makeFrame(src, 'Demo Web Admin Kliktiva versi desktop'); deskFrame.addEventListener('load', () => { const l = $('deskViewport').querySelector('.demo-loading'); if (l) l.remove(); }); const inner = document.createElement('div'); inner.className = 'desk-inner'; inner.appendChild(deskFrame); $('deskViewport').appendChild(inner); }
     else if (tab) { deskFrame.src = src + '&r=' + Date.now(); }
     fitDesk();
   }
   function loadPhone() {
     if (phoneFrame) return;
-    phoneFrame = makeFrame('demo-admin/admin.html?demo=mobile', 'Demo Web Admin Kliktiva versi mobile');
+    phoneFrame = makeFrame('demo-admin/admin.html?demo=mobile&plan=' + currentPlan, 'Demo Web Admin Kliktiva versi mobile');
     phoneFrame.addEventListener('load', () => { const l = $('phoneScreen').querySelector('.demo-loading'); if (l) l.remove(); });
     $('phoneScreen').appendChild(phoneFrame);
   }
@@ -1001,20 +1140,38 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
     $('demoCaption').textContent = CAPTIONS[name];
     if (name === 'desktop') loadDesk(opts.tab);
     if (name === 'mobile') loadPhone();
-    if (name === 'gallery') { buildGallery(); if (opts.cat) setCategory(opts.cat); }
+  }
+  function setPlan(plan) {
+    if (plan === currentPlan) return;
+    currentPlan = plan;
+    document.querySelectorAll('.plan-seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.plan === plan)));
+    $('planNote').textContent = PLAN_NOTES[plan];
+    if (deskFrame) { deskFrame.src = 'demo-admin/admin.html?demo=desktop&plan=' + plan; }
+    if (phoneFrame) { phoneFrame.src = 'demo-admin/admin.html?demo=mobile&plan=' + plan; }
+    document.querySelectorAll('a[href^="demo-admin/admin.html"]').forEach(a => { a.href = a.getAttribute('href').replace(/&plan=\w+/, '').replace(/(\?demo=\w+)/, '$1&plan=' + plan); });
+  }
+  document.querySelectorAll('.plan-seg button').forEach(b => b.addEventListener('click', () => setPlan(b.dataset.plan)));
+  $('planNote').textContent = PLAN_NOTES.free;
+  function openTemplates(cat) {
+    buildGallery(); if (cat) setCategory(cat);
+    $('template').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => $('template').scrollIntoView({ behavior: 'auto', block: 'start' }), 900);
   }
   function openDemo(name, cat) {
     const isAnalytics = name === 'analytics';
-    setTab(isAnalytics ? 'desktop' : name, { tab: isAnalytics ? 'analytics' : '', cat });
+    setTab(isAnalytics ? 'desktop' : name, { tab: isAnalytics ? 'analytics' : '' });
     $('demo').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   document.querySelectorAll('.demo-tab').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
   document.querySelectorAll('[data-open-demo]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openDemo(a.dataset.openDemo); }));
   window.addEventListener('resize', fitDesk, { passive: true });
   $('demoCaption').textContent = CAPTIONS.desktop;
+  fitDesk(); // tinggi area demo dikunci sejak awal agar halaman tidak bergeser saat demo dimuat
   // Muat Demo Desktop saat section demo mendekati layar (bukan saat halaman pertama dibuka).
   const demoObserver = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { if (document.querySelector('.demo-tab[aria-selected="true"]').dataset.tab === 'desktop') loadDesk(); demoObserver.disconnect(); } }, { rootMargin: '400px' });
   demoObserver.observe($('demo'));
+  const tplObserver = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { buildGallery(); tplObserver.disconnect(); } }, { rootMargin: '500px' });
+  tplObserver.observe($('template'));
 
   /* ---------- Galeri template ---------- */
   const THUMB_W = 390;
@@ -1165,19 +1322,23 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
   const submitButton = contactForm.querySelector('.form-submit');
   if (runtimeConfig.customerEndpoint || runtimeConfig.customerApiEndpoint) submitButton.innerHTML = 'Kirim kebutuhan &amp; lanjut ke WhatsApp <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>';
   $('phone').addEventListener('input', () => { const v = $('phone').value.trim(); const ok = /^[0-9+().\s-]{8,22}$/.test(v) && v.replace(/\D/g, '').length >= 8; $('phone').setCustomValidity(!v || ok ? '' : 'Masukkan nomor HP dengan minimal 8 digit.'); });
-  function buildSummary() { const v = new FormData(contactForm); const s = [...document.querySelectorAll('input[name="channels"]:checked')].map(x => x.value); return `Halo Admin Kliktiva, saya ingin berkonsultasi mengenai website katalog Kliktiva.\n\nNama: ${v.get('name') || '-'}\nNomor HP: ${v.get('phone') || '-'}\nJenis usaha: ${v.get('role') || '-'}\nKebutuhan: ${v.get('interest') || '-'}\nKanal pemesanan/tautan tujuan: ${s.length ? s.join(', ') : '-'}\nApa yang ingin ditampilkan: ${v.get('need') || '-'}`; }
+  function buildSummary() { const v = new FormData(contactForm); const s = [...document.querySelectorAll('input[name="channels"]:checked')].map(x => x.value); return `Halo Admin Kliktiva, saya ingin berkonsultasi mengenai Paket Personal Kliktiva.\n\nNama: ${v.get('name') || '-'}\nNomor HP: ${v.get('phone') || '-'}\nJenis usaha: ${v.get('role') || '-'}\nKebutuhan: ${v.get('interest') || '-'}\nKanal pemesanan/tautan tujuan: ${s.length ? s.join(', ') : '-'}\nApa yang ingin ditampilkan: ${v.get('need') || '-'}`; }
   const normalizeAdminWhatsapp = value => { let n = String(value || '').replace(/\D/g, ''); if (n.startsWith('0')) n = '62' + n.slice(1); return /^\d{8,15}$/.test(n) ? n : ''; };
+  function applyContactInfo(c){var v={email:String((c&&c.contactEmail)||'').trim(),address:String((c&&c.businessAddress)||'').trim()};
+if(!/^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(v.email))v.email='';
+['email','address'].forEach(function(k){if(!v[k])return;document.querySelectorAll('[data-fill="'+k+'"]').forEach(function(el){el.textContent=v[k];if(k==='email'&&el.tagName==='A')el.href='mailto:'+v[k];});document.querySelectorAll('[data-show="'+k+'"]').forEach(function(el){el.hidden=false;});});}
   function applyPublicRuntimeConfig(configData) {
     const received = (configData && configData.config && typeof configData.config === 'object') ? configData.config : configData;
     if (!received || typeof received !== 'object') return;
     Object.assign(runtimeConfig, received);
+    applyContactInfo(received);
     const adminNumber = normalizeAdminWhatsapp(received.adminWhatsappNumber || received.whatsappAdmin || '');
     if (!Array.isArray(window.KLIKTIVA_SOCIALS) && Array.isArray(received.socials)) renderSocials(received.socials);
-    const trial = Number(received.freeTrialDays);
-    if (Number.isFinite(trial) && trial > 0) document.querySelectorAll('[data-free-trial-days]').forEach(el => { el.textContent = String(Math.round(trial)); });
     if (adminNumber) document.querySelectorAll('[data-admin-wa]').forEach(el => { el.href = 'https://api.whatsapp.com/send?phone=' + adminNumber + '&text=' + encodeURIComponent(el.dataset.adminWa); el.target = '_blank'; el.rel = 'noopener'; });
-    if (adminNumber) { footerWa.href = 'https://wa.me/' + adminNumber; footerWa.target = '_blank'; footerWa.rel = 'noopener'; footerWaNumber.textContent = '+' + adminNumber; footerWa.setAttribute('aria-label', 'Hubungi WhatsApp Admin Kliktiva di +' + adminNumber); }
+    if (adminNumber) { footerWa.href = 'https://wa.me/' + adminNumber; footerWa.target = '_blank'; footerWa.rel = 'noopener'; footerWaNumber.textContent = adminNumber === '6285602703111' ? '+62 856-0270-3111' : '+' + adminNumber; footerWa.setAttribute('aria-label', 'Hubungi WhatsApp Admin Kliktiva di +' + adminNumber); }
   }
+  applyPublicRuntimeConfig({ adminWhatsappNumber: '6285602703111' });
+  if (location.protocol === 'file:') applyContactInfo({contactEmail:'email-anda@contoh.com',businessAddress:'Contoh alamat usaha (preview lokal, diisi di sheet Settings)'});
   if (location.protocol !== 'file:') {
     fetch((runtimeConfig.configEndpoint || apiPath) + '?action=config', { method: 'GET', headers: { Accept: 'application/json' }, credentials: 'same-origin', cache: 'no-store' })
       .then(r => r.ok ? r.json() : null).then(d => { if (d && d.ok === true) applyPublicRuntimeConfig(d); }).catch(() => {});
@@ -1196,7 +1357,7 @@ h3{font-size:20px;font-weight:760;margin-bottom:10px}
       const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), credentials: 'omit', cache: 'no-store' });
       let data = {}; const text = await response.text(); try { data = text ? JSON.parse(text) : {}; } catch (_) { throw new Error('Respons server tidak dapat dibaca.'); }
       if (!response.ok || data.ok === false || data.success === false || data.error || !(data.ok === true || data.success === true || data.status === 'success' || data.customerId || data.id || data.recordId)) throw new Error(data.message || data.error || `Data belum dikonfirmasi tersimpan (HTTP ${response.status}).`);
-      const adminNumber = normalizeAdminWhatsapp(data.adminWhatsappNumber || data.whatsappAdmin || config.adminWhatsappNumber || config.whatsappAdminNumber || '');
+      const adminNumber = normalizeAdminWhatsapp(data.adminWhatsappNumber || data.whatsappAdmin || config.adminWhatsappNumber || config.whatsappAdminNumber || '6285602703111');
       if (!adminNumber) { if (waWin) waWin.close(); showResult('Data konsultasi berhasil tersimpan, tetapi nomor WhatsApp Admin belum dikonfigurasi. Tim Kliktiva dapat menindaklanjuti data ini; silakan salin ringkasan jika ingin menghubungi secara manual.'); return; }
       const customerId = data.customerId || data.id || ''; const waMessage = latestSummary + (customerId ? `\n\nID konsultasi: ${customerId}` : '');
       const waUrl = `https://api.whatsapp.com/send?phone=${adminNumber}&text=${encodeURIComponent(waMessage)}`;

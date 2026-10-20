@@ -12,6 +12,9 @@
     work: 'photo-1516321318423-f06f85e504b3', coffee: 'photo-1495474472287-4d71bcdd2085', bread: 'photo-1509440159596-0249088772ff'
   };
   var DEMO_BRAND = 'Rona Living';
+  var PLAN = /[?&]plan=paid/.test(location.search) ? 'paid' : 'free';
+  function isoShift(days) { return new Date(Date.now() + 7 * 3600000 + days * 86400000).toISOString().slice(0, 10); }
+  function ctaFields() { return PLAN === 'free' ? { websiteCtaEnabled: 'true', websiteCtaUrl: 'https://app.kliktiva.my.id/?ref=ronaliving' } : { websiteCtaEnabled: 'false', websiteCtaUrl: '' }; }
 
   // ---------------- Katalog contoh ----------------
   var COLLECTIONS = [
@@ -114,7 +117,7 @@
         instagram: 'ronaliving.id', tiktok: 'ronaliving.id', shopee: 'ronaliving', youtube: 'ronaliving', facebook: 'ronaliving.id', threads: 'ronaliving.id',
         other1Label: 'Tokopedia', other1Url: link('Custom'), other2Label: '', other2Url: '', other3Label: '', other3Url: '', other4Label: '', other4Url: '', other5Label: '', other5Url: '',
         activationCode: 'KLIKTIVA-DEMO-2026', about: p.about, seoTitle: p.seoTitle, seoDescription: p.seoDescription, address: p.address,
-        websiteCtaEnabled: 'false', websiteCtaWhatsapp: '', websiteCtaLabel: 'Mau website seperti ini? Chat Admin'
+        websiteCtaWhatsapp: '', websiteCtaLabel: 'Mau website seperti ini? Chat Admin', websiteCtaEnabled: ctaFields().websiteCtaEnabled, websiteCtaUrl: ctaFields().websiteCtaUrl
       },
       products: s.products.map(function (x) {
         var cid = x.collectionIds[0] || '';
@@ -245,20 +248,35 @@
       });
       s.collections.forEach(function (c) { c.productIds = s.products.filter(function (p) { return (p.collectionIds || []).indexOf(c.id) >= 0; }).map(function (p) { return p.id; }); });
     }
-    return { ok: true, scope: scope, state: JSON.parse(JSON.stringify(s)), message: 'Perubahan tersimpan (mode demo).' };
+    var out = JSON.parse(JSON.stringify(s)); Object.assign(out.profile, ctaFields()); return { ok: true, scope: scope, state: out, message: 'Perubahan tersimpan (mode demo).' };
   }
 
   function todayIso() { var d = new Date(Date.now() + 7 * 3600000); return d.toISOString().slice(0, 10); }
   function handle(action, args) {
     switch (action) {
-      case 'getLicenseStatus': return { active: true, reason: 'ACTIVE', message: 'Lisensi aktif (demo).', activeDate: '2025-03-12', expiryDate: '2027-03-12', showWebsiteCta: false, licenseSessionToken: 'demo-license-session', licenseSessionExpiresAt: new Date(Date.now() + 864e5).toISOString(), contactUrl: '', adminPhone: '' };
+      case 'getLicenseStatus': {
+        var free = PLAN === 'free';
+        return { active: true, reason: free ? 'TRIAL' : 'AKTIF', status: free ? 'TRIAL' : 'AKTIF', message: free ? 'Masa trial aktif.' : 'Langganan aktif.',
+          expiryDate: free ? isoShift(21) : isoShift(300), daysLeft: free ? 21 : 300, remind: false, grace: '', showWebsiteCta: free,
+          adminPhone: '', contactUrl: 'https://app.kliktiva.my.id/', renewUrl: 'https://app.kliktiva.my.id/', ssoUrl: '', dashboardUrl: 'https://app.kliktiva.my.id/dashboard',
+          hostname: 'ronaliving.kliktiva.my.id', clientId: 'ronaliving', siteName: DEMO_BRAND, packageId: free ? 'trial' : 'tahunan', licenseSessionToken: 'aktif' };
+      }
+      case 'adminHandoff': return { token: 'demo-admin-token', username: 'owner.rona', role: 'SYSTEM_ADMIN' };
       case 'activateLicense': return { active: true, message: 'Aktivasi berhasil (demo).' };
       case 'adminLogin': return { token: 'demo-admin-token', username: 'owner.rona', role: 'SYSTEM_ADMIN', expiresIn: 86400 };
       case 'getPublicDataVersion': return { version: 'demo-1' };
       case 'trackAnalyticsEvent': return { ok: true };
       case 'getPublicSeoMeta': return { title: STATE.profile.seoTitle, description: STATE.profile.seoDescription };
       case 'getPublicData': case 'adminGetData': return legacyData();
-      case 'getTop100PublicData': case 'adminGetTop100State': return JSON.parse(JSON.stringify(STATE));
+      case 'getTop100PublicData': case 'adminGetTop100State': { var st = JSON.parse(JSON.stringify(STATE)); Object.assign(st.profile, ctaFields(), { uiTemplate: String(st.selectedTemplate || 1), theme: 'lavender', fontTheme: 'inter' }); if (action === 'getTop100PublicData') {
+          st.products = st.products.filter(function (p) { return p.status === 'PUBLISH'; });
+          st.collections.forEach(function (c) { c.productIds = c.productIds.filter(function (id) { return st.products.some(function (p) { return p.id === id; }); }); });
+          var byId = {}; st.collections.forEach(function (c) { byId[c.id] = c; });
+          var products = st.products.map(function (p) { var first = (p.photos || [])[0] || ''; var cid = (p.collectionIds || [])[0] || null; return { id: p.id, title: p.name, link: p.linkType === 'whatsapp' ? '' : p.url, image: first, imageFallback: '', status: p.status, collectionId: cid, collection: cid && byId[cid] ? byId[cid].name : '', order: p.order, price: p.price, buttonLabel: p.linkType === 'whatsapp' ? 'Hubungi via WhatsApp' : 'Lihat Produk' }; });
+          var collections = st.collections.map(function (c) { return { id: c.id, name: c.name, productCount: c.productIds.length, coverUrl: c.coverUrl || '', coverUrlFallback: '', previewImages: c.productIds.map(function (id) { var p = st.products.filter(function (x) { return x.id === id; })[0]; return p && p.photos[0] ? { url: p.photos[0], fallback: '' } : null; }).filter(Boolean).slice(0, 12) }; });
+          return { profile: Object.assign({}, st.profile), products: products, collections: collections, top100: st };
+        }
+        return st; }
       case 'adminSaveTop100State': return saveTop100(args[1], String(args[2] || 'all').toLowerCase());
       case 'adminGetAnalytics': return dashboard(args[1] || isoOf(dayNum(todayIso()) - 29), args[2] || todayIso());
       case 'adminGetAnalyticsInsights': return insights(args[1] || isoOf(dayNum(todayIso()) - 29), args[2] || todayIso());
@@ -272,7 +290,7 @@
         return { ok: true, message: 'Akun tersimpan (demo).' };
       }
       case 'adminDeleteAccount': ACCOUNTS = ACCOUNTS.filter(function (x) { return x.username !== args[1]; }); return { ok: true };
-      case 'uploadImageToDrive': return { imageUrl: args[1] };
+      case 'uploadImageToDrive': return { imageUrl: args[1], fileId: 'demo' };
       case 'adminGetDisplayProducts': return legacyData().products;
       default: return { ok: true, message: 'Tersimpan (mode demo).' };
     }
